@@ -1,9 +1,9 @@
 package main
 
 import (
-	"IDCheck/IdNumber"
-	"IDCheck/USCI"
 	"fmt"
+	"github.com/bluesky335/IDCheck/IdNumber"
+	"github.com/bluesky335/IDCheck/USCI"
 )
 
 func main() {
