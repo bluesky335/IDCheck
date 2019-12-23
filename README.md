@@ -1,5 +1,5 @@
 # 身份证号码、法人和其他组织统一社会信用代码 的合法性校验
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/bluesky335/IDCheck/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 用于校验 `身份证号码` 和 `法人和其他组织统一社会信用代码` 的工具。
 
