@@ -34,9 +34,9 @@ go get github.com/bluesky335/IDCheck
   
   var usci = USCI.New ("91350100M000100Y43")
   if usci.IsValid () {
-      fmt.Printf ("✅Correct \ n")
+      fmt.Printf ("✅Correct \n")
   } else {
-      fmt.Printf ("❌Error \ n")
+      fmt.Printf ("❌Error \n")
   }
 ```
 
@@ -47,9 +47,9 @@ go get github.com/bluesky335/IDCheck
 
     var id = IdNumber.New ("11010519491231002X")
     if id.IsValid () {
-        fmt.Printf ("% s->% s \ n", id, "✅Correct")
+        fmt.Printf ("% s->% s \n", id, "✅Correct")
     } else {
-        fmt.Printf ("% s->% s \ n", id, "❌Error")
+        fmt.Printf ("% s->% s \n", id, "❌Error")
     }
 ```
 
