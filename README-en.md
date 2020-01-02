@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-[中文](/bluesky335/IDCheck/blob/master/README.md) | English
+[中文](README.md) | English
 
 A tool go package for verifying the ID card number and the unified social credit code of legal persons and other organizations.
 

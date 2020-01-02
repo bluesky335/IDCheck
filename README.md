@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
- 中文 | [English](/bluesky335/IDCheck/blob/master/README-en.md)
+ 中文 | [English](README-en.md)
 
 用于校验 `身份证号码` 和 `法人和其他组织统一社会信用代码` 的工具。
 
