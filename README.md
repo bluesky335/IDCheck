@@ -55,4 +55,4 @@
 
 ## JavaScript 版本
 
-[IDCheck.js](IDCheck.js) : 作者 [@as80393313](https://www.v2ex.com/member/as80393313)
+ChrisDowney1996  [validators](https://github.com/ChrisDowney1996/validators)
