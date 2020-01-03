@@ -55,4 +55,4 @@
 
 ## JavaScript 版本
 
-[IDCheck.js](/bluesky335/IDCheck/blob/master/IDCheck.js) : 作者 [@as80393313](https://www.v2ex.com/member/as80393313)
+[IDCheck.js](IDCheck.js) : 作者 [@as80393313](https://www.v2ex.com/member/as80393313)
