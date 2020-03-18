@@ -27,11 +27,13 @@ SOFTWARE.
 package IdNumber
 
 import (
+	"errors"
 	"fmt"
 	"math"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // 计算规则参考“中国国家标准化管理委员会”官方文档：http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E
@@ -88,4 +90,68 @@ func (id IdNumber) IsValid() bool {
 		a1Str = "X"
 	}
 	return a1Str == signChar
+}
+
+type Date struct {
+}
+
+func (id IdNumber) GetBirthday() (date time.Time, err error) {
+	if !id.IsValid() {
+		err = errors.New("invalid id number")
+		return
+	}
+	var yearStr = subString(string(id), 6, 4)
+	var monthStr = subString(string(id), 10, 2)
+	var dayStr = subString(string(id), 12, 2)
+	year, err := strconv.Atoi(yearStr)
+	if err != nil {
+		return
+	}
+	month, err := strconv.Atoi(monthStr)
+	if err != nil {
+		return
+	}
+	day, err := strconv.Atoi(dayStr)
+	if err != nil {
+		return
+	}
+	date = time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.Local)
+	return
+}
+
+type Gender int
+
+const (
+	Female Gender = 0
+	Male   Gender = 1
+)
+
+func (id IdNumber) GetGender() (gender Gender, err error) {
+	if !id.IsValid() {
+		err = errors.New("invalid id number")
+		return
+	}
+	numStr := subString(string(id), 14, 3)
+	num, err := strconv.Atoi(numStr)
+	if err != nil {
+		return
+	}
+	gender = Gender(num % 2)
+	return
+}
+
+func subString(str string, begin, length int) string {
+	rs := []rune(str)
+	lth := len(rs)
+	if begin < 0 {
+		begin = 0
+	}
+	if begin >= lth {
+		begin = lth
+	}
+	end := begin + length
+	if end > lth {
+		end = lth
+	}
+	return string(rs[begin:end])
 }
