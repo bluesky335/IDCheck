@@ -1,10 +1,10 @@
-# China citizen identification number and The coding rule of the unified social credit identifier for legal entities and other organizations legality check
+# Legality check of "China Citizen ID Card Number" and "China Unified Social Credit Code for Legal Persons and Other Organizations"
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 [中文](README.md) | English
 
-A tool go package for verifying the ID card number and the unified social credit code of legal persons and other organizations.
+A go package for verify the ID card number and the unified social credit code of legal persons and other organizations.
 
 Calculation rules refer to national standard documents:
 
