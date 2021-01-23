@@ -29,15 +29,16 @@ go get github.com/bluesky335/IDCheck
 
 - Unified social credit code for legal persons and other organizations
 
-``` go
-  import "github.com/bluesky335/IDCheck/USCI"
-  
-  var usci = USCI.New ("91350100M000100Y43")
-  if usci.IsValid () {
-      fmt.Printf ("✅Correct \n")
-  } else {
-      fmt.Printf ("❌Error \n")
-  }
+
+```go
+    import "github.com/bluesky335/IDCheck/USCI"
+  
+    var usci = USCI.New("91350100M000100Y43")
+    if usci.IsValid() {
+        fmt.Printf("✅\n")
+    } else {
+        fmt.Printf("❌\n")
+    }
 ```
 
 - identification number
@@ -45,12 +46,31 @@ go get github.com/bluesky335/IDCheck
 ``` go
     import "github.com/bluesky335/IDCheck/IdNumber"
 
-    var id = IdNumber.New ("11010519491231002X")
-    if id.IsValid () {
-        fmt.Printf ("% s->% s \n", id, "✅Correct")
+    var id = IdNumber.New("11010519491231002X")
+    if id.IsValid() {
+        fmt.Printf("%s -> %s\n", id, "✅")
     } else {
-        fmt.Printf ("% s->% s \n", id, "❌Error")
+        fmt.Printf("%s -> %s\n", id, "❌")
     }
+    
+    var birthday = id.GetBirthday()
+	if birthday != nil {
+	    fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
+	} else {
+		// invalid ID card number
+	}
+	
+	var gender = id.GetGender()
+	if gender != -1 {
+	    genderMap := map[Gender]string{
+			Female: "Female",
+			Male:   "Male",
+		}
+	    fmt.Printf("性别：%s\n", genderMap[gemder])
+	} else {
+	    // invalid ID card number
+	}
+     
 ```
 
 ## JavaScript version

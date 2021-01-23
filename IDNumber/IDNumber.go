@@ -24,27 +24,25 @@ SOFTWARE.
 
 // Author: @BlueSky335 github home page : https://github.com/bluesky335
 
-package IdNumber
+package IDNumber
 
 import (
-	"errors"
 	"fmt"
 	"math"
 	"regexp"
 	"strconv"
 	"strings"
-	"time"
 )
 
-// 计算规则参考“中国国家标准化管理委员会”官方文档：http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E
+type IDNumber string
 
-type IdNumber string
-
-func New(number string) IdNumber {
-	return IdNumber(number)
+func New(number string) IDNumber {
+	return IDNumber(number)
 }
 
-func (id IdNumber) IsValid() bool {
+// 检查是否符合身份证国标
+// 计算规则参考“中国国家标准化管理委员会”官方文档：http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E
+func (id IDNumber) IsValid() bool {
 	//a1与对应的校验码对照表，其中key表示a1，value表示校验码，value中的10表示校验码X
 	var a1Map = map[int]int{
 		0:  1,
@@ -92,54 +90,6 @@ func (id IdNumber) IsValid() bool {
 	return a1Str == signChar
 }
 
-type Date struct {
-}
-
-func (id IdNumber) GetBirthday() (date time.Time, err error) {
-	if !id.IsValid() {
-		err = errors.New("invalid id number")
-		return
-	}
-	var yearStr = subString(string(id), 6, 4)
-	var monthStr = subString(string(id), 10, 2)
-	var dayStr = subString(string(id), 12, 2)
-	year, err := strconv.Atoi(yearStr)
-	if err != nil {
-		return
-	}
-	month, err := strconv.Atoi(monthStr)
-	if err != nil {
-		return
-	}
-	day, err := strconv.Atoi(dayStr)
-	if err != nil {
-		return
-	}
-	date = time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.Local)
-	return
-}
-
-type Gender int
-
-const (
-	Female Gender = 0
-	Male   Gender = 1
-)
-
-func (id IdNumber) GetGender() (gender Gender, err error) {
-	if !id.IsValid() {
-		err = errors.New("invalid id number")
-		return
-	}
-	numStr := subString(string(id), 14, 3)
-	num, err := strconv.Atoi(numStr)
-	if err != nil {
-		return
-	}
-	gender = Gender(num % 2)
-	return
-}
-
 func subString(str string, begin, length int) string {
 	rs := []rune(str)
 	lth := len(rs)
@@ -154,4 +104,43 @@ func subString(str string, begin, length int) string {
 		end = lth
 	}
 	return string(rs[begin:end])
+}
+
+type Birthday struct {
+	Year  string
+	Month string
+	Day   string
+}
+
+// 获取身份证的生日，如果是不合法的身份证号码则返回nil
+func (id IDNumber) GetBirthday() (birthday *Birthday) {
+	if !id.IsValid() {
+		return nil
+	}
+	birthday = new(Birthday)
+	birthday.Year = subString(string(id), 6, 4)
+	birthday.Month = subString(string(id), 10, 2)
+	birthday.Day = subString(string(id), 12, 2)
+	return birthday
+}
+
+type Gender int
+
+const (
+	Female Gender = 0
+	Male   Gender = 1
+)
+
+// 获取身份证的性别，男性返回1，女性返回0，如果是非法的身份证，则返回-1
+func (id IDNumber) GetGender() (gender Gender) {
+	if !id.IsValid() {
+		return -1
+	}
+	numStr := subString(string(id), 14, 3)
+	num, err := strconv.Atoi(numStr)
+	if err != nil {
+		return
+	}
+	gender = Gender(num % 2)
+	return
 }
