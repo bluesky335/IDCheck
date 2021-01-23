@@ -53,22 +53,22 @@
     }
     
     var birthday = id.GetBirthday()
-	if birthday != nil {
-	    fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
-	} else {
-		// 不合法的身份证	
-	}
-	
-	var gender = id.GetGender()
-	if gender != -1 {
-	    genderMap := map[Gender]string{
-			Female: "女",
-			Male:   "男",
-		}
-	    fmt.Printf("性别：%s\n", genderMap[gemder])
-	} else {
-	    // 不合法的身份证
-	}
+    if birthday != nil {
+        fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
+    } else {
+        // 不合法的身份证    
+    }
+    
+    var gender = id.GetGender()
+    if gender != -1 {
+        genderMap := map[Gender]string{
+            Female: "女",
+            Male:   "男",
+        }
+        fmt.Printf("性别：%s\n", genderMap[gemder])
+    } else {
+        // 不合法的身份证
+    }
      
 ```
 

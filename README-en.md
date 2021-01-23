@@ -54,22 +54,22 @@ go get github.com/bluesky335/IDCheck
     }
     
     var birthday = id.GetBirthday()
-	if birthday != nil {
-	    fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
-	} else {
-		// invalid ID card number
-	}
-	
-	var gender = id.GetGender()
-	if gender != -1 {
-	    genderMap := map[Gender]string{
-			Female: "Female",
-			Male:   "Male",
-		}
-	    fmt.Printf("性别：%s\n", genderMap[gemder])
-	} else {
-	    // invalid ID card number
-	}
+    if birthday != nil {
+        fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
+    } else {
+        // invalid ID card number
+    }
+    
+    var gender = id.GetGender()
+    if gender != -1 {
+        genderMap := map[Gender]string{
+            Female: "Female",
+            Male:   "Male",
+        }
+        fmt.Printf("性别：%s\n", genderMap[gemder])
+    } else {
+        // invalid ID card number
+    }
      
 ```
 
