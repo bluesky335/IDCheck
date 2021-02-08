@@ -72,6 +72,10 @@
      
 ```
 
+## Swift 版本
+
+[IDCard](https://github.com/bluesky335/IDCard)
+
 ## JavaScript 版本
 
 ChrisDowney1996  [validators](https://github.com/ChrisDowney1996/validators)
