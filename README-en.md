@@ -77,6 +77,10 @@ go get github.com/bluesky335/IDCheck
      
 ```
 
+## Swift version
+
+[IDCard](https://github.com/bluesky335/IDCard)
+
 ## JavaScript version
 
 ChrisDowney1996  [validators](https://github.com/ChrisDowney1996/validators)
