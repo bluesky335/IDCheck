@@ -5,7 +5,6 @@
 package IDNumber
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -17,34 +16,31 @@ func TestIDNumber_IsValid(t *testing.T) {
 	}
 	for index, id := range IDs_True {
 		var id = New(id)
+		if !id.IsValid() {
+			t.Fatal(id)
+			return
+		}
 		var birthday = id.GetBirthday()
 		if birthday == nil {
-			t.Failed()
+			t.Fatal(id)
 			return
 		}
 		var gender = id.GetGender()
 		if gender == -1 {
-			t.Failed()
+			t.Fatal(id)
 			return
-		}
-		genderMap := map[Gender]string{
-			Female: "女",
-			Male:   "男",
 		}
 		switch index {
 		case 0:
 			if gender != Female {
-				t.Failed()
+				t.Fatal(id)
+				return
 			}
 		case 1:
 			if gender != Male {
-				t.Failed()
+				t.Fatal(id)
+				return
 			}
-		}
-		if id.IsValid() {
-			fmt.Printf("%-4d%s -> %s\t生日：%s-%s-%s 性别：%s \n", index, id, "✅", birthday.Year, birthday.Month, birthday.Day, genderMap[gender])
-		} else {
-			fmt.Printf("%-4d%s -> %s\t生日：%s-%s-%s 性别：%s \n", index, id, "❌", birthday.Year, birthday.Month, birthday.Day, genderMap[gender])
 		}
 	}
 
@@ -54,6 +50,11 @@ func TestIDNumber_IsValid(t *testing.T) {
 	}
 	for _, id := range IDs_False {
 		var id = New(id)
+
+		if id.IsValid() {
+			t.Failed()
+			return
+		}
 		var birthday = id.GetBirthday()
 		if birthday != nil {
 			t.Failed()
@@ -61,6 +62,17 @@ func TestIDNumber_IsValid(t *testing.T) {
 		var gender = id.GetGender()
 		if gender != -1 {
 			t.Failed()
+		}
+	}
+}
+
+func TestRandomCard(t *testing.T) {
+	for i := 0; i < 1000; i++ {
+		cardStr := Random()
+		card := New(cardStr)
+		if !card.IsValid() {
+			t.Fatal(cardStr)
+			break
 		}
 	}
 }

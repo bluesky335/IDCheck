@@ -12,7 +12,7 @@ Calculation rules refer to national standard documents:
 
 - **GB 32100-2015**: [The coding rule of the unified social credit identifier for legal entities and other organizations](http://www.gb688.cn/bzgk/gb/newGbInfo?hcno=24691C25985C1073D3A7C85629378AC0)
 
-> **Note**: Due to the earlier implementation of the “Unified Social Credit Code for Legal Persons and Other Organizations” in some pilot areas of China, some codes may not meet national standards. But they are all legal codes and should be handled separately.
+> Note: Due to the earlier implementation of the “Unified Social Credit Code for Legal Persons and Other Organizations” in some pilot areas of China, some code may not meet national standards, But they are all rightful code and should be handled separately.
 > For example:
 >
 > **福建恒跃柳工机械销售有限公司**: `91350100M0001TGQXM` The calculated check digit is `1` and `M` does not match
@@ -55,7 +55,7 @@ go get github.com/bluesky335/IDCheck
     
     var birthday = id.GetBirthday()
     if birthday != nil {
-        fmt.Printf("生日：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
+        fmt.Printf("Birthday：%s-%s-%s\n", birthday.Year, birthday.Month, birthday.Day)
     } else {
         // invalid ID card number
     }
@@ -66,10 +66,14 @@ go get github.com/bluesky335/IDCheck
             Female: "Female",
             Male:   "Male",
         }
-        fmt.Printf("性别：%s\n", genderMap[gemder])
+        fmt.Printf("Gender：%s\n", genderMap[gender])
     } else {
         // invalid ID card number
     }
+    
+    // Generate a random ID number that conforms to the verification rules. Although it complies with the verification rules, it does not necessarily exist.
+    randomIDCard := IdNumber.Random()
+    fmt.Printf("random ID number：%s\n", randomIDCard)
      
 ```
 

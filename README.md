@@ -65,10 +65,14 @@
             Female: "女",
             Male:   "男",
         }
-        fmt.Printf("性别：%s\n", genderMap[gemder])
+        fmt.Printf("性别：%s\n", genderMap[gender])
     } else {
         // 不合法的身份证
     }
+
+    // 产生一个随机的符合校验规则的身份证号码。注意！它虽然符合校验规则，但不一定真实存在。
+    randomIDCard := IdNumber.Random()
+    fmt.Printf("随机身份证：%s\n", randomIDCard)
      
 ```
 
