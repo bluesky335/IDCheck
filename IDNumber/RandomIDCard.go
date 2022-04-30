@@ -3220,7 +3220,7 @@ var cityCode = []string{
 	// 820000    澳门特别行政区
 }
 
-func RandomIDCard() string {
+func Random() string {
 	rand.Seed(time.Now().UnixNano())
 	time := time.Unix(time.Now().Unix()-rand.Int63n(70*365*24*60*60), 0)
 	birthdayStr := time.Format("20060102")
